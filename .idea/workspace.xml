@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="abworld" targetName="abworld" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9f5ec33-596c-421b-a341-46bc08e263f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABKey.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABKey.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABLine.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABLine.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABPoint.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABPoint.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABTriangle.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABTriangle.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OKGF.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OKGF.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TBufEC.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TBufEC.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TKeyAB.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TKeyAB.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TKeyGroupList.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TKeyGroupList.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TLineAB.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TLineAB.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TPointAB.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TPointAB.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TTriangleAB.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TTriangleAB.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabObj3D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabObj3D.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabObj3Dunit.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabObj3Dunit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabTex.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabTex.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabWorldUnit.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabWorldUnit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabZone.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabZone.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabZoneLink.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TabZoneLink.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Utils.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Utils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WorldUnit.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WorldUnit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WorldZone.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WorldZone.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdC/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdCXX/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/abworld.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/abworld.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/windows.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1beyEHHWPP6lpevgzkj0nBEDujw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="abworld" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="abworld" TARGET_NAME="abworld" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="abworld" RUN_TARGET_NAME="abworld">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9f5ec33-596c-421b-a341-46bc08e263f5" name="Default Changelist" comment="" />
+      <created>1589006740903</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589006740903</updated>
+      <workItem from="1589006742146" duration="95000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="605" y="234" key="RollbackChangesDialog" timestamp="1589006810205">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="605" y="234" key="RollbackChangesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1589006810205" />
+  </component>
+</project>
