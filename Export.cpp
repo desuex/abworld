@@ -23,7 +23,11 @@ void Export::Close() {
 
 void Export::writeLine(const std::string &key, const std::string &value) {
     putTabs();
-    file << key << "=" << value << std::endl;
+    std::string str = value;
+    str.erase(std::find_if(str.rbegin(), str.rend(), [](int character) {
+        return '\0' != character;
+    }).base(), str.end());
+    file << key << "=" << str << std::endl;
 }
 
 void Export::writeLine(const std::string &key, const uint16_t &value) {
@@ -74,5 +78,5 @@ void Export::writeLine(const std::string &key, int value) {
 
 void Export::writeLine(const std::string &key, bool value) {
     putTabs();
-    file << key << "=" << (value?"True":"False") << std::endl;
+    file << key << "=" << (value ? "True" : "False") << std::endl;
 }
