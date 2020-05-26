@@ -8,24 +8,26 @@
 void ABLine::Line_LoadWorld(TBufEC &buf, ABKey &abKey, ABPoint &abPoint, WorldUnit &worldUnit) {
     TLineAB *el;
     int cnt = buf.GetUINT32();
-    std::cout << "Line count: " << cnt << std::endl;
+
     for (int i = 0; i < cnt; i++) {
         int no = buf.GetUINT32();
-        TKeyGroupList gl = abKey.KeyGroupList_ByNom(no);
-        el = Line_Add(gl);
+        TKeyGroupList *gl = abKey.KeyGroupList_ByNom(no);
+        el = Line_Add(gl, i);
+        el->FNo = i;
         el->LoadWorld(buf, worldUnit, abPoint);
     }
 
 }
 
-TLineAB *ABLine::Line_Add(TKeyGroupList &gl) {
-    TLineAB *el;
-    el = new TLineAB();
+TLineAB *ABLine::Line_Add(TKeyGroupList *gl, int i) {
+    auto *el = new TLineAB();;
     if (Line_Last) {
         Line_Last->FNext = el;
     }
     el->FPrev = Line_Last;
-    if (Line_First) {
+    el->FNo = i;
+    Line_Last = el;
+    if (!Line_First) {
         Line_First = el;
     }
     return el;

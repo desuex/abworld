@@ -22,7 +22,7 @@ int OKGF::OKGF_ZLib_UnCompress(BYTE *desbuf, int lendesbuf, BYTE *soubuf, int le
     DWORD deslen=lendesbuf;
 
     if(lensoubuf<8) return 0;
-    if(*(soubuf+0)!='Z' || *(soubuf+1)!='L' || *(soubuf+2)!='0' || *(soubuf+3)!='2') return 0;
+    if(*(soubuf+0)!='Z' || *(soubuf+1)!='L' || *(soubuf+2)!='0' || *(soubuf+3)!='1') return 0;
     if(desbuf==nullptr) return *((DWORD *)(soubuf+4));
     if(*((DWORD *)(soubuf+4))>DWORD(lendesbuf)) return 0;
 

@@ -12,8 +12,8 @@
 
 class TabWorldUnit {
 public:
-    TabWorldUnit* FPrev;
-    TabWorldUnit* FNext;
+    TabWorldUnit *FPrev;
+    TabWorldUnit *FNext;
     std::string FFileName;
     bool FSel;
 
@@ -32,7 +32,9 @@ public:
 
     int FBBState; // 0=-1 0=rebuild 1=yes
     TabWorldUnitBB FBB[3];
+
     void LoadWorld(TBufEC &buf);
+
     TDxyz CalcCenter();
 
 };

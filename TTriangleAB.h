@@ -16,15 +16,17 @@ typedef struct TTriangleUnitAB{
     float FU;
     float FV;
     TKeyAB FColor;
+    std::string WColor;
     TabObj3D FSel;
 } TTriangleUnitAB;
 class TTriangleAB {
 public:
     TTriangleAB *FPrev;
     TTriangleAB *FNext;
-    TTriangleUnitAB *FV; //TODO
+    TTriangleUnitAB* FV[3]={}; //TODO
     TabObj3D FGraph;
     std::string FTexture;
+    std::string color;
     bool FBackFace;
     bool FSel;
     int FSelPoint;

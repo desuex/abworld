@@ -13,12 +13,14 @@
 typedef struct TKeyGroup {
     std::string FName;
 } TKeyGroup;
+
 class TKeyGroupList {
 public:
     int FNo{};
     std::list<TKeyGroup> FList;
     int FCur;
-    TabWorldUnit* FOwner;
+    void *FOwner;
+
     void LoadWorld(TBufEC &buf);
 //    TKeyGroup Insert(int no);
 };

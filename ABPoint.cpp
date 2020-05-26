@@ -9,9 +9,9 @@
 void ABPoint::Point_LoadWorld(TBufEC &buf, WorldUnit &worldUnit) {
     TPointAB *el;
     int cnt = buf.GetUINT32();
-    for (int i=0; i < cnt; i++) {
+    for (int i = 0; i < cnt; i++) {
         el = Point_Add();
-        el->FNo = i+1;
+        el->FNo = i + 1;
         el->LoadWorld(buf, worldUnit);
     }
     //TODO: Stuff
@@ -26,8 +26,8 @@ void ABPoint::Point_LoadWorld(TBufEC &buf, WorldUnit &worldUnit) {
     }
 }
 
-TPointAB* ABPoint::Point_Add() {
-    TPointAB *el = new TPointAB();
+TPointAB *ABPoint::Point_Add() {
+    auto *el = new TPointAB();
     if (Point_Last) {
         Point_Last->FNext = el;
     }
@@ -40,9 +40,9 @@ TPointAB* ABPoint::Point_Add() {
 }
 
 void ABPoint::Point_ListBuild() {
-    TPointAB* el;
-    int cnt = Point_Cnt()+1;
-    Point_List = new TPointAB*[cnt];
+    TPointAB *el;
+    int cnt = Point_Cnt() + 1;
+    Point_List = new TPointAB *[cnt];
     int i = 1;
     el = Point_First;
     while (el) {
@@ -52,8 +52,8 @@ void ABPoint::Point_ListBuild() {
     }
 }
 
-int ABPoint::Point_Cnt() {
-    TPointAB* el;
+int ABPoint::Point_Cnt() const {
+    TPointAB *el;
     int cnt = 0;
     el = Point_First;
     while (el) {
@@ -63,7 +63,7 @@ int ABPoint::Point_Cnt() {
     return cnt;
 }
 
-TPointAB *ABPoint::Point_ByNo(int no) {
+TPointAB *ABPoint::Point_ByNo(int no) const {
     TPointAB *el;
     el = Point_First;
     while (el) {

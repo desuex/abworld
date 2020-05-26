@@ -12,12 +12,13 @@
 
 class WorldZone {
 public:
-    TabZone * Zone_First;
-    TabZone * Zone_Last;
-    TabZoneLink * ZoneLink_First;
-    TabZoneLink * ZoneLink_Last;
+    TabZone *Zone_First;
+    TabZone *Zone_Last;
+    TabZoneLink *ZoneLink_First;
+    TabZoneLink *ZoneLink_Last;
 
     void Zone_LoadWorld(TBufEC &buf, xyzV ab_WorldRadius);
+
     TabZone *Zone_Add();
 };
 

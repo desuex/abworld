@@ -11,8 +11,8 @@ void WorldUnit::LoadWorld(TBufEC &buf) {
     }
 }
 
-TabWorldUnit* WorldUnit::WorldUnit_Add(TBufEC &buf, int i) {
-    TabWorldUnit* el = new TabWorldUnit();
+TabWorldUnit *WorldUnit::WorldUnit_Add(TBufEC &buf, int i) {
+    auto *el = new TabWorldUnit();
     el->FNo = i;
     el->LoadWorld(buf);
     if (WorldUnit_Last_initialized) {

@@ -18,6 +18,7 @@ typedef struct D3DVECTOR {
     float z;
 } D3DVECTOR;
 typedef D3DVECTOR TDxyz;
+typedef DWORD D3DCOLOR;
 typedef struct TabWorldUnitBB {
     xyzV FOrbit;
     xyzV FOrbitAngle;

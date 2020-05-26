@@ -17,8 +17,11 @@ public:
     bool WorldUnit_Last_initialized = false;
 
     void LoadWorld(TBufEC &buf);
-    TabWorldUnit* WorldUnit_ByNo(int no) const;
-    TabWorldUnit* WorldUnit_Add(TBufEC &buf, int i);
+
+    TabWorldUnit *WorldUnit_ByNo(int no) const;
+
+    TabWorldUnit *WorldUnit_Add(TBufEC &buf, int i);
+
     void WorldUnit_CalcCenter() const;
 };
 

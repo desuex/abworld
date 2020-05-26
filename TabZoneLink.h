@@ -14,14 +14,12 @@ public:
     TabZoneLink *FPrev;
     TabZoneLink *FNext;
 
-    TabZone * FStart;
-    TabZone * FEnd;
+    TabZone *FStart;
+    TabZone *FEnd;
 
     TabObj3D *FGraph;
     int FType; // 0-normal 1-stop line
     bool FSel;
-
-
 
 
 };

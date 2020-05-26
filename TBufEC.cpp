@@ -7,11 +7,8 @@
 TBufEC::TBufEC() = default;
 
 void TBufEC::LoadFromFile(const std::string &filename) {
-//     ifst(filename, std::ios::in | std::ios::binary);
     file.open(filename, std::ios::in | std::ios::binary);
 
-//    TBufEC::mystream->open(filename, std::ios::in | std::ios::binary);
-//    TBufEC::len = mystream->
 }
 /**
  * 32 bit

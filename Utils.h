@@ -10,9 +10,12 @@
 
 class Utils {
 public:
-    static TDxyz *ab_CalcPos(float orb, float orban, xyzV radius);
+    static TDxyz ab_CalcPos(float orb, float orban, xyzV radius);
+
     static float Angle360ToRad(float angle);
+
     static double Angle360ToRad(double angle);
+
     static TDxyz Dxyz(xyzV x, xyzV y, xyzV z);
 
 };

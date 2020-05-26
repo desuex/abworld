@@ -31,7 +31,7 @@ public:
 
 
     void Line_LoadWorld(TBufEC &buf, ABKey &abKey, ABPoint &abPoint, WorldUnit &worldUnit);
-    TLineAB *Line_Add(TKeyGroupList &gl);
+    TLineAB *Line_Add(TKeyGroupList* gl, int i);
 };
 
 

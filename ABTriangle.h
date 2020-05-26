@@ -14,10 +14,12 @@
 
 class ABTriangle {
 public:
-    TTriangleAB* Triangle_First;
-    TTriangleAB* Triangle_Last;
+    TTriangleAB *Triangle_First;
+    TTriangleAB *Triangle_Last;
+
     void Triangle_LoadWorld(TBufEC &buf, WorldUnit &worldUnit, ABKey &abKey, ABPoint &abPoint);
-    TTriangleAB* Triangle_Add(TKeyGroupList &gl);
+
+    TTriangleAB *Triangle_Add(TKeyGroupList *gl, int num);
 };
 
 

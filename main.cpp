@@ -1,7 +1,4 @@
 #include<iostream>
-#include<fstream>
-#include <vector>
-#include <filesystem>
 #include "TBufEC.h"
 #include "TabWorldUnit.h"
 #include "WorldUnit.h"
@@ -10,279 +7,16 @@
 #include "ABTriangle.h"
 #include "ABLine.h"
 #include "WorldZone.h"
+#include "Export.h"
 
 using namespace std;
 
-struct Header {
-    uint32_t marker;
-    uint32_t version;
-    float world_size;
-    uint32_t elements_count;
-};
 
-void readPoints(ifstream &rf) {
-    uint16_t total_objects;
-    rf.read((char *) &total_objects, sizeof(total_objects));
-    cout << "POINTS" << endl;
-    cout << "total points: " << total_objects << endl;
-    uint16_t filler16;
-    uint64_t filler64;
-    for (int obj = 0; obj < total_objects; obj++) {
-        string guid;
-        char c;
-        for (int i = 0; i < 74; i++) {
-            rf.read((char *) &c, sizeof(c));
-            guid += c;
-        }
-
-        cout << "guid: " << guid << endl;
-
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-        float c_x;
-        float c_y;
-        float c_size;
-        rf.read((char *) &c_x, sizeof(c_x));
-        cout << "X: " << c_x << endl;
-        rf.read((char *) &c_y, sizeof(c_y));
-        cout << "Y: " << c_y << endl;
-        rf.read((char *) &c_size, sizeof(c_size));
-        cout << "Size: " << c_size << endl;
-
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-        string attribute;
-        do {
-            rf.read((char *) &c, sizeof(c) * 2);
-            if (c == 0) {
-                break;
-            }
-            attribute += c;
+int main(int argc, char *argv[]) {
+    Export exp;
+    exp.openFileToSave("output.txt");
 
 
-        } while (true);
-        if (attribute.length() > 0) {
-            cout << "attribute: " << attribute << endl;
-            rf.read((char *) &filler16, sizeof(filler16));
-            cout << "filler16: " << filler16 << endl;
-        }
-
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-        rf.read((char *) &filler64, sizeof(filler64));
-        cout << "filler64: " << filler64 << endl;
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-        rf.read((char *) &filler16, sizeof(filler16));
-        cout << "filler16: " << filler16 << endl;
-
-    }
-}
-
-Header readHead(ifstream &rf) {
-    Header h{};
-    rf.read((char *) &h.marker, sizeof(h.marker));
-    rf.read((char *) &h.version, sizeof(h.version));
-    rf.read((char *) &h.world_size, sizeof(h.world_size));
-    rf.read((char *) &h.elements_count, sizeof(h.elements_count));
-    cout << "header: " << h.marker << endl;
-    cout << "version: " << h.version << endl;
-    cout << "world size: " << h.world_size << endl;
-    cout << "total elements: " << h.elements_count << endl;
-    return h;
-}
-
-void readDataPaths(ifstream &rf, Header h) {
-    string data_files[h.elements_count];
-    for (int i = 0; i < h.elements_count; i++) {
-        string data_path;
-        char c;
-        do {
-            rf.read((char *) &c, sizeof(c) * 2);
-            data_path += c;
-            if (c == 0) {
-                break;
-            }
-
-        } while (true);
-        cout << "path: " << data_path << endl;
-        data_files[i] = data_path;
-        uint64_t filler;
-        rf.read((char *) &filler, sizeof(filler));
-        rf.read((char *) &filler, sizeof(filler));
-    }
-}
-
-void readPointConfig(ifstream &rf) {
-    uint16_t elements_count2;
-    rf.read((char *) &elements_count2, sizeof(elements_count2));
-    uint16_t filler;
-    rf.read((char *) &filler, sizeof(filler));
-    uint16_t some_number2;
-    for (int i = 0; i < elements_count2 * 5; i++) {
-        rf.read((char *) &some_number2, sizeof(some_number2));
-    }
-}
-
-void readVertice(ifstream &rf) {
-    uint16_t filler16;
-    uint8_t filler8;
-    uint16_t point_number;
-    rf.read((char *) &filler8, sizeof(filler8));
-    cout << "filler8: " << filler8 << endl;
-    rf.read((char *) &point_number, 1);
-    cout << "point #" << point_number << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    string diffuse;
-    char c;
-    char last = (char) 255;
-    for (int i = 0; i < 255; i++) {
-        rf.read((char *) &c, sizeof(c));
-//        cout<<"char #"<<i<<": "<<c<<" num" <<(int)c<<endl;
-        if (c != (char) 63) {
-            diffuse += c;
-        }
-
-        if (c == 0 && last == 0) {
-            break;
-        }
-        last = c;
-    }
-    cout << "diffuse: " << diffuse << endl;
-//    rf.read((char *) &filler16, sizeof(filler16));
-//    cout << "filler16: " << filler16 << endl;
-//    rf.read((char *) &filler16, sizeof(filler16));
-//    cout << "filler16: " << filler16 << endl;
-//    rf.read((char *) &filler16, sizeof(filler16));
-//    cout << "filler16: " << filler16 << endl;
-//    rf.read((char *) &filler16, sizeof(filler16));
-//    cout << "filler16: " << filler16 << endl;
-
-//    rf.read((char *) &filler8, sizeof(filler8));
-//    cout << "filler8: " << filler8 << endl;
-}
-
-void readPolygons(ifstream &rf) {
-    uint16_t filler16;
-    rf.read((char *) &filler16, sizeof(filler16));
-    uint16_t polygonCount;
-    rf.read((char *) &polygonCount, sizeof(polygonCount));
-    cout << "polygon count: " << polygonCount << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    uint16_t polygon_number;
-    rf.read((char *) &polygon_number, sizeof(polygon_number));
-    cout << "polygon #" << polygon_number << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-    rf.read((char *) &filler16, sizeof(filler16));
-    cout << "filler16: " << filler16 << endl;
-
-
-    readVertice(rf);
-    readVertice(rf);
-    readVertice(rf);
-
-
-}
-
-
-void readRaw(const string &filename) {
-
-    ifstream rf(filename, ios::in | ios::binary);
-
-
-    if (!rf) {
-        cout << "Cannot open raw file!" << endl;
-    }
-    if (rf.is_open()) {
-        Header h{};
-        h = readHead(rf);
-        readDataPaths(rf, h);
-
-        readPointConfig(rf);
-        readPoints(rf);
-        readPolygons(rf);
-
-        rf.close();
-    }
-
-
-}
-
-TabWorldUnit *WorldUnit_First;
-bool WorldUnit_First_initialized = false;
-TabWorldUnit *WorldUnit_Last;
-bool WorldUnit_Last_initialized = false;
-TabWorldUnit el;
-
-TabWorldUnit *WorldUnit_Add() {
-    el = TabWorldUnit();
-    if (WorldUnit_Last_initialized) {
-        WorldUnit_Last->FNext = &el;
-    }
-    el.FPrev = WorldUnit_Last;
-    WorldUnit_Last = &el;
-    WorldUnit_Last_initialized = true;
-    if (!WorldUnit_First_initialized) {
-        WorldUnit_First = &el;
-    }
-
-    return &el;
-}
-
-void WorldUnit_LoadWorld(TBufEC &buf) {
-
-    int i;
-    int cnt;
-//    TabWorldUnit el;
-    cnt = buf.GetInteger();
-    for (i = 0; i < cnt - i; i++) {
-        el = *WorldUnit_Add();
-        el.FNo = i;
-        el.LoadWorld(buf);
-    }
-
-}
-
-void KeyGroupList_LoadWorld(TBufEC &buf) {
-
-}
-
-void Point_LoadWorld(TBufEC &buf) {
-
-}
-
-void Triangle_LoadWorld(TBufEC &buf) {
-
-}
-
-void Line_LoadWorld(TBufEC &buf) {
-
-}
-
-void Zone_LoadWorld(TBufEC &buf) {
-
-}
-
-
-int main() {
     float ab_WorldRadius = 1000;
 
 //    ab_Camera_Pos:TabPos;
@@ -292,36 +26,184 @@ int main() {
     float ab_Camera_Fov = 88;
     uint32_t signature = 0x57424152; //RABW
     uint32_t version = 3;
+
+
     TBufEC buf;
     buf.LoadFromFile("04_1_v00_new.raw");
     uint32_t loadSignature = buf.GetUINT32();
+
     if (loadSignature != signature) {
         cerr << "Invalid signature" << endl;
         return 1;
     }
+    exp.writeLineHex("Signature", loadSignature);
     uint32_t loadVersion = buf.GetUINT32();
     if (loadVersion > version) {
         cerr << "Invalid version" << endl;
         return 1;
     }
+    exp.writeLine("Version", loadVersion);
     ab_WorldRadius = buf.GetFloat();
+    exp.writeLine("WorldRadius", ab_WorldRadius);
     ab_Camera_Radius = ab_WorldRadius + ab_Camera_RadiusDefaultFW;
     WorldUnit worldUnit = WorldUnit();
     worldUnit.LoadWorld(buf);
+
+    exp.openObject("WorldUnit");
+    TabWorldUnit *u = worldUnit.WorldUnit_First;
+    while (u) {
+        exp.openObject(u->FNo);
+        exp.writeLine("FFileName", u->FFileName);
+        exp.writeLine("FType", u->FType);
+        exp.writeLine("FTimeOffset", u->FTimeOffset);
+        exp.writeLine("FKeyGroup", u->FKeyGroup);
+        exp.writeLine("FTimeLength", u->FTimeLength);
+        exp.closeObject();
+        u = u->FNext;
+    }
+    exp.closeObject();
+
+
     ABKey abKey = ABKey();
     abKey.KeyGroupList_LoadWorld(buf, worldUnit);
+    exp.openObject("KeyGroupList"); //open KeyGroupList
+
+    for (TKeyGroupList *const &i : abKey.KeyGroupList_List) {
+        exp.openObject(i->FNo); //open TKeyGroupList
+        exp.writeLine("ParentWorldUnit", static_cast<TabWorldUnit *>(i->FOwner)->FNo);
+        exp.writeLine("FCur", i->FCur);
+        exp.openObject("FList"); //open FList
+        int counter = 0;
+        for (auto const &k : i->FList) {
+            exp.openObject(counter); //open TKeyGroup
+            exp.writeLine("FName", k.FName);
+            exp.closeObject(); //close TKeyGroup
+        }
+        exp.closeObject(); // close FList
+        exp.closeObject(); // close TKeyGroupList
+    }
+    exp.closeObject(); // close KeyGroupList
+
     ABPoint abPoint = ABPoint();
     abPoint.Point_LoadWorld(buf, worldUnit);
+    exp.openObject("Point"); //open Point
+    TPointAB *p = abPoint.Point_First;
+    while (p) {
+        exp.openObject(p->FNo); //TPointAB
+        exp.writeLine("FId", p->FId);
+        exp.writeLine("FPortId", p->FPortId);
+        exp.writeLine("FPortLink", p->FPortLink);
+        exp.writeLine("FCopyPortId", p->FCopyPortId);
+        exp.writeLine("FCopyPortLink", p->FCopyPortLink);
+
+        exp.writeLine("FOrbit", p->FOrbit);
+        exp.writeLine("FOrbitAngle", p->FOrbitAngle);
+        exp.writeLine("FRadius", p->FRadius);
+
+        exp.openObject("FPos"); //open FPos
+        exp.writeLine("x", (float) p->FPos.x);
+        exp.writeLine("y", (float) p->FPos.y);
+        exp.writeLine("z", (float) p->FPos.z);
+        exp.closeObject(); //close FPos
+
+        exp.openObject("FOwner"); //open FOwner
+        for (TabWorldUnit *const &w : p->FOwner) {
+            exp.writeLine("ParentTabWorldUnit", w->FNo);
+        }
+        exp.closeObject(); //close FOwner
+
+        exp.closeObject(); //close TPointAB
+        p = p->FNext;
+    }
+
+    exp.closeObject(); //close Point
+
     ABTriangle abTriangle = ABTriangle();
     abTriangle.Triangle_LoadWorld(buf, worldUnit, abKey, abPoint);
+
+    exp.openObject("Triangle"); //open Triangle
+    TTriangleAB *tr = abTriangle.Triangle_First;
+    while (tr) {
+        exp.openObject(tr->FNo); //TTriangleAB
+
+        exp.openObject("FV"); //start FV
+        for (int i = 0; i < 3; i++) {
+            exp.openObject(i); //start TTriangleUnitAB
+            exp.writeLine("FVer", tr->FV[i]->FVer->FNo);
+            exp.writeLine("FV", tr->FV[i]->FV);
+            exp.writeLine("FU", tr->FV[i]->FU);
+            exp.writeLine("WColor", tr->FV[i]->WColor);
+            exp.closeObject(); // close TTriangleUnitAB
+        }
+
+        exp.closeObject(); //close FV
+
+        //TODO: FGraph
+        exp.writeLine("FTexture", tr->FTexture);
+        exp.writeLine("FBackFace", tr->FBackFace);
+        exp.writeLine("FOwner", tr->FOwner->FNo);
+
+
+        exp.closeObject(); //close TTriangleAB
+
+
+        tr = tr->FNext;
+    }
+    exp.closeObject(); //Triangle
+
+
+
     ABLine abLine = ABLine();
-    abLine.Line_LoadWorld(buf, abKey,abPoint, worldUnit);
+    abLine.Line_LoadWorld(buf, abKey, abPoint, worldUnit);
+    exp.openObject("Line"); //open Line
+    TLineAB* li = abLine.Line_First;
+    while (li) {
+        exp.openObject(li->FNo); //TTriangleAB
+        exp.writeLine("FVerStart",li->FVerStart->FNo);
+        exp.writeLine("FVerEnd",li->FVerEnd->FNo);
+        exp.writeLine("FOwnerTabWorldUnit",li->FOwner->FNo);
+        exp.writeLine("WColorStart", li->WColorStart);
+        exp.writeLine("WColorEnd", li->WColorEnd);
+        exp.writeLine("FStopLine", li->FStopLine);
+        exp.writeLine("FShow", li->FShow);
+        li = li->FNext;
+        exp.closeObject(); //close TTriangleAB
+    }
+    exp.closeObject(); //close Line
+
+
     WorldZone worldZone = WorldZone();
     worldZone.Zone_LoadWorld(buf, ab_WorldRadius);
+    exp.openObject("WorldZone"); //open WorldZone
+    TabZone* tz = worldZone.Zone_First;
+    while (tz) {
+        exp.openObject(tz->FNo); //TabZone
+        exp.writeLine("FOrb", tz->FOrb);
+        exp.writeLine("FOrbAngle", tz->FOrbAngle);
+        exp.writeLine("FRadiusAngle", tz->FRadiusAngle);
+        exp.writeLine("FRadius", tz->FRadius);
+        exp.writeLine("FType", tz->FType);
+        exp.writeLine("FGraph", tz->FGraph);
+        exp.writeLine("FHitpoints", tz->FHitpoints);
+        exp.writeLine("FMass", tz->FMass);
+        exp.writeLine("FDamage", tz->FDamage);
+        exp.writeLine("FItem", tz->FItem);
+        exp.writeLine("FItemFreq", tz->FItemFreq);
+        exp.openObject("FPos"); //open FPos
+        exp.writeLine("x", (float) tz->FPos.x);
+        exp.writeLine("y", (float) tz->FPos.y);
+        exp.writeLine("z", (float) tz->FPos.z);
+        exp.closeObject(); //close FPos
+        tz = tz->FNext;
+        exp.closeObject(); //close TabZone
+
+    }
+
+    exp.closeObject();// close WorldZone
     //Point_ClearNo;
     //        Point_ListClear;
-    worldUnit.WorldUnit_CalcCenter();
+//    worldUnit.WorldUnit_CalcCenter();
     buf.Close();
-
+    exp.Close();
     return 0;
 }

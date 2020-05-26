@@ -12,10 +12,13 @@
 
 class ABKey {
 public:
-    std::list<TKeyGroupList> KeyGroupList_List;
+    std::list<TKeyGroupList *> KeyGroupList_List;
+
     void KeyGroupList_LoadWorld(TBufEC &buf, WorldUnit &worldUnit);
-    TKeyGroupList KeyGroupList_Add(TabWorldUnit *ow);
-    TKeyGroupList KeyGroupList_ByNom(int no);
+
+    TKeyGroupList *KeyGroupList_Add(TabWorldUnit *ow, int no);
+
+    TKeyGroupList *KeyGroupList_ByNom(int no);
 };
 
 

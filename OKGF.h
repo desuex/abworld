@@ -11,6 +11,8 @@
 //#define NULL  __DARWIN_NULL
 class OKGF {
     static int OKGF_ZLib_Compress(BYTE *desbuf, BYTE *soubuf, int len_sou_and_des_buf, int fSpeed);
+
+public:
     static int OKGF_ZLib_UnCompress(BYTE * desbuf,int lendesbuf,BYTE * soubuf,int lensoubuf);
 };
 

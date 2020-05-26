@@ -4,11 +4,11 @@
 
 #include "TKeyGroupList.h"
 
-void TKeyGroupList::LoadWorld(TBufEC &buf ) {
-//    FCur = TabWorldUnit()
+void TKeyGroupList::LoadWorld(TBufEC &buf) {
+    FCur = static_cast<TabWorldUnit *>(this->FOwner)->FKeyGroup;
     int cnt = buf.GetUINT32();
-    std::cout<<"CNT: "<<cnt<<std::endl;
-    for (int i=0; i<cnt;i++){
+
+    for (int i = 0; i < cnt; i++) {
         TKeyGroup group = {buf.GetWideStr()};
         FList.push_front(group);
     }

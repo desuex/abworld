@@ -13,17 +13,21 @@
 
 class TLineAB {
 public:
-    TLineAB * FNext;
-    TLineAB * FPrev;
+    TLineAB *FNext;
+    TLineAB *FPrev;
     bool FShow;
     bool FStopLine;
     TPointAB *FVerStart;
     TPointAB *FVerEnd;
     TKeyAB *FColorStart;
     TKeyAB *FColorEnd;
+    std::string WColorStart;
+    std::string WColorEnd;
     TabObj3D *FGraph;
     bool *FSel;
     TabWorldUnit *FOwner;
+    int FNo;
+
     void LoadWorld(TBufEC &buf, WorldUnit &worldUnit, ABPoint &abPoint);
 };
 

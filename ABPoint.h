@@ -15,11 +15,16 @@ public:
     TPointAB *Point_First;
     TPointAB *Point_Last;
     TPointAB **Point_List;
+
     void Point_LoadWorld(TBufEC &buf, WorldUnit &worldUnit);
-    TPointAB* Point_Add();
+
+    TPointAB *Point_Add();
+
     void Point_ListBuild();
-    int Point_Cnt();
-    TPointAB* Point_ByNo(int no);
+
+    int Point_Cnt() const;
+
+    TPointAB *Point_ByNo(int no) const;
 
 };
 

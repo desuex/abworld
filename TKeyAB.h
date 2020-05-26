@@ -7,11 +7,13 @@
 
 
 #include "TKeyGroupList.h"
+
 typedef std::function<void(int)> func;
+
 class TKeyAB {
 public:
-    TKeyAB * FKeyPrev;
-    TKeyAB * FKeyNext;
+    TKeyAB *FKeyPrev;
+    TKeyAB *FKeyNext;
     TKeyGroupList FGroupList;
     int FCount;
     int FCur;
@@ -26,6 +28,7 @@ public:
      */
 //    Key_DefFunInterpolate FFunInterpolate;
     int FTimeFull;
+
     void Load(std::string tstr);
 };
 

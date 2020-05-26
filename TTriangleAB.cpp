@@ -7,23 +7,24 @@
 
 void TTriangleAB::LoadWorld(TBufEC &buf, WorldUnit &worldUnit, ABPoint &abPoint) {
     FTexture = buf.GetWideStr();
-    std::cout<<"FTexture: "<<FTexture<<std::endl;
-    FBackFace = buf.GetBoolean();
-    std::cout<<"FBackFace: "<<FBackFace<<std::endl;
-    int no = buf.GetUINT32();
-    std::cout<<"no: "<<no<<std::endl;
-    FOwner = worldUnit.WorldUnit_ByNo(no);
-    FV = new TTriangleUnitAB[2];
 
-    for (int i=0; i<3;i++){
+    FBackFace = buf.GetBoolean();
+
+    int no = buf.GetUINT32();
+
+    FOwner = worldUnit.WorldUnit_ByNo(no);
+
+    for (auto &i : FV) { //dabious magic High(FV)
+        i = new TTriangleUnitAB();
         int pointNo = buf.GetUINT32();
-        std::cout<<"pointNo: "<<pointNo<<std::endl;
-        FV[i].FVer = abPoint.Point_ByNo(pointNo);
-        FV[i].FU = buf.GetSingle();
-        FV[i].FV = buf.GetSingle();
+
+        i->FVer = abPoint.Point_ByNo(pointNo);
+        i->FU = buf.GetSingle();
+        i->FV = buf.GetSingle();
         std::string fcolor = buf.GetWideStr();
-        std::cout<<"FColor: "<<fcolor<<std::endl;
+
         //TODO: LOAD
-        FV[i].FColor.Load(fcolor);
+        i->FColor.Load(fcolor);
+        i->WColor = fcolor;
     }
 }
