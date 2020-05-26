@@ -7,7 +7,7 @@ if (ZLIB_FOUND)
     include_directories(${ZLIB_INCLUDE_DIRS})
     link_libraries(${ZLIB_LIBRARIES})
 endif (ZLIB_FOUND)
-add_executable(abworld main.cpp TBufEC.cpp TBufEC.h windows.h OKGF.cpp OKGF.h TabWorldUnit.cpp TabWorldUnit.h TabObj3D.cpp TabObj3D.h TabTex.cpp TabTex.h TabObj3Dunit.cpp TabObj3Dunit.h WorldUnit.cpp WorldUnit.h ABKey.cpp ABKey.h TKeyGroupList.cpp TKeyGroupList.h ABPoint.cpp ABPoint.h TPointAB.cpp TPointAB.h Utils.cpp Utils.h ABTriangle.cpp ABTriangle.h TTriangleAB.cpp TTriangleAB.h TKeyAB.cpp TKeyAB.h ABLine.cpp ABLine.h TLineAB.cpp TLineAB.h WorldZone.cpp WorldZone.h TabZone.cpp TabZone.h TabZoneLink.cpp TabZoneLink.h Form_Main.cpp Form_Main.h TabWorldLine.cpp TabWorldLine.h WorldLine.cpp WorldLine.h Export.cpp Export.h)
+add_executable(abworld main.cpp TBufEC.cpp TBufEC.h windows.h OKGF.cpp OKGF.h TabWorldUnit.cpp TabWorldUnit.h TabObj3D.cpp TabObj3D.h TabTex.cpp TabTex.h TabObj3Dunit.cpp TabObj3Dunit.h WorldUnit.cpp WorldUnit.h ABKey.cpp ABKey.h TKeyGroupList.cpp TKeyGroupList.h ABPoint.cpp ABPoint.h TPointAB.cpp TPointAB.h Utils.cpp Utils.h ABTriangle.cpp ABTriangle.h TTriangleAB.cpp TTriangleAB.h TKeyAB.cpp TKeyAB.h ABLine.cpp ABLine.h TLineAB.cpp TLineAB.h WorldZone.cpp WorldZone.h TabZone.cpp TabZone.h TabZoneLink.cpp TabZoneLink.h TabWorldLine.cpp TabWorldLine.h WorldLine.cpp WorldLine.h Export.cpp Export.h)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
