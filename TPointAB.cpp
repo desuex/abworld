@@ -15,7 +15,8 @@ void TPointAB::LoadWorld(TBufEC &buf, WorldUnit &worldUnit) {
     FRadius = buf.GetSingle();
 
     FParent = new TPointAB();
-    int FParentNum = buf.GetUINT32();
+
+    FParentNum = buf.GetUINT32();
 
     FPortId = buf.GetWideStr();
 
@@ -32,7 +33,7 @@ void TPointAB::LoadWorld(TBufEC &buf, WorldUnit &worldUnit) {
 
     int cnt = buf.GetUINT32();
 
-
+    FOwnerCount = cnt;
     for (int i = 0; i < cnt; i++) {
         int ownerNo = buf.GetUINT32();
 

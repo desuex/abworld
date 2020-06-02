@@ -91,14 +91,25 @@ int main(int argc, char *argv[]) {
     while (p) {
         exp.openObject(p->FNo); //TPointAB
         exp.writeLine("FId", p->FId);
-        exp.writeLine("FPortId", p->FPortId);
-        exp.writeLine("FPortLink", p->FPortLink);
-        exp.writeLine("FCopyPortId", p->FCopyPortId);
-        exp.writeLine("FCopyPortLink", p->FCopyPortLink);
-
         exp.writeLine("FOrbit", p->FOrbit);
         exp.writeLine("FOrbitAngle", p->FOrbitAngle);
         exp.writeLine("FRadius", p->FRadius);
+        exp.writeLine("FParent", p->FParent?p->FParent->FNo:p->FParentNum);
+
+        exp.writeLine("FPortId", p->FPortId);
+        exp.writeLine("FPortType", p->FPortType);
+        exp.writeLine("FPortLink", p->FPortLink);
+
+        exp.writeLine("FCopyPortId", p->FCopyPortId);
+        exp.writeLine("FCopyPortType", p->FCopyPortType);
+        exp.writeLine("FCopyPortLink", p->FCopyPortLink);
+        exp.writeLine("FOwnerCount",(p->FOwnerCount));
+        exp.openObject("FOwner"); //open FOwner
+        for (TabWorldUnit *const &w : p->FOwner) {
+            exp.writeLine("FNo", w->FNo);
+        }
+        exp.closeObject(); //close FOwner
+
 
         exp.openObject("FPos"); //open FPos
         exp.writeLine("x", (float) p->FPos.x);
@@ -106,11 +117,8 @@ int main(int argc, char *argv[]) {
         exp.writeLine("z", (float) p->FPos.z);
         exp.closeObject(); //close FPos
 
-        exp.openObject("FOwner"); //open FOwner
-        for (TabWorldUnit *const &w : p->FOwner) {
-            exp.writeLine("ParentTabWorldUnit", w->FNo);
-        }
-        exp.closeObject(); //close FOwner
+
+
 
         exp.closeObject(); //close TPointAB
         p = p->FNext;
@@ -125,7 +133,9 @@ int main(int argc, char *argv[]) {
     TTriangleAB *tr = abTriangle.Triangle_First;
     while (tr) {
         exp.openObject(tr->FNo); //TTriangleAB
-
+        exp.writeLine("FTexture", tr->FTexture);
+        exp.writeLine("FBackFace", tr->FBackFace);
+        exp.writeLine("FOwner", tr->FOwner->FNo);
         exp.openObject("FV"); //start FV
         for (int i = 0; i < 3; i++) {
             exp.openObject(i); //start TTriangleUnitAB
@@ -139,9 +149,7 @@ int main(int argc, char *argv[]) {
         exp.closeObject(); //close FV
 
         //TODO: FGraph
-        exp.writeLine("FTexture", tr->FTexture);
-        exp.writeLine("FBackFace", tr->FBackFace);
-        exp.writeLine("FOwner", tr->FOwner->FNo);
+
 
 
         exp.closeObject(); //close TTriangleAB
@@ -161,11 +169,13 @@ int main(int argc, char *argv[]) {
         exp.openObject(li->FNo); //TTriangleAB
         exp.writeLine("FVerStart",li->FVerStart->FNo);
         exp.writeLine("FVerEnd",li->FVerEnd->FNo);
-        exp.writeLine("FOwnerTabWorldUnit",li->FOwner->FNo);
         exp.writeLine("WColorStart", li->WColorStart);
         exp.writeLine("WColorEnd", li->WColorEnd);
-        exp.writeLine("FStopLine", li->FStopLine);
         exp.writeLine("FShow", li->FShow);
+        exp.writeLine("FStopLine", li->FStopLine);
+        exp.writeLine("FOwner",li->FOwner->FNo);
+
+
         li = li->FNext;
         exp.closeObject(); //close TTriangleAB
     }

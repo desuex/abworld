@@ -19,8 +19,8 @@ void ABPoint::Point_LoadWorld(TBufEC &buf, WorldUnit &worldUnit) {
     Point_ListBuild();
     el = Point_First;
     while (el) {
-        if (el->FParent) {
-            el->FParent = Point_List[el->FParent->FNo];
+        if (el->FParentNum) {
+            el->FParent = Point_ByNo(el->FParentNum);
         }
         el = el->FNext;
     }
@@ -42,7 +42,7 @@ TPointAB *ABPoint::Point_Add() {
 void ABPoint::Point_ListBuild() {
     TPointAB *el;
     int cnt = Point_Cnt() + 1;
-    Point_List = new TPointAB *[cnt];
+    Point_List = new TPointAB*[cnt];
     int i = 1;
     el = Point_First;
     while (el) {

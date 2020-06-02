@@ -17,6 +17,7 @@ public:
     TPointAB *FPrev;
     TPointAB *FNext;
     TPointAB *FParent;
+    int FParentNum;
     std::string FId;
     std::string FPortId;
     std::string FPortType;
@@ -35,6 +36,7 @@ public:
     bool FSel;
     int FNo;
     std::list<TabWorldUnit *> FOwner;
+    int FOwnerCount;
     int FTemp;
 
     void LoadWorld(TBufEC &buf, WorldUnit &worldUnit);
